@@ -1,0 +1,16 @@
+1.
+To compile just type "make" on the command line.
+
+2.
+Pressing ESC will quit the program.
+
+3.
+Use 
+
+toylogo -f <filename.logo> 
+
+to run a LOGO program. You can try this with toylogo_complete. The output from your compelted code should match this.
+
+
+4.
+This code uses OpenGL 2.1.
