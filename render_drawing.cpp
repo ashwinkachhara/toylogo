@@ -69,12 +69,13 @@ void testPattern(turtle_t &turt)
 	turt.set_col(red);
 	turt.printAttr();
 	turt.forward(0.2);
-	turt.printAttr();
 	turt.turn_right(90);
-	turt.printAttr();
+	turt.backward_move(0.05);
 	turt.set_col(green);
-	turt.forward(0.2);
+	turt.back(0.2);
 	turt.set_bgcol(blue.r, blue.g, blue.b);
+	
+	//~ turt.clear();
 }
 
 void render_drawing(turtle_t &turt)
