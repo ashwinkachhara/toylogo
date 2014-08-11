@@ -61,17 +61,25 @@ void testPattern(turtle_t &turt)
 	turt.reset();
 	turt.clear();
 	
+	color_t red, green, blue;
+	red.r = 1.0; red.g = 0.0; red.b = 0.0;
+	green.r = 0.0; green.g = 1.0; green.b = 0.0;
+	blue.r = 0.0; blue.g = 0.0; blue.b = 1.0;
+	
+	turt.set_col(red);
 	turt.printAttr();
 	turt.forward(0.2);
 	turt.printAttr();
 	turt.turn_right(90);
 	turt.printAttr();
+	turt.set_col(green);
 	turt.forward(0.2);
+	turt.set_bgcol(blue.r, blue.g, blue.b);
 }
 
 void render_drawing(turtle_t &turt)
 {
-	koch(turt, 1.0);
-	//~ testPattern(turt);
+	//~ koch(turt, 1.0);
+	testPattern(turt);
   
 }
