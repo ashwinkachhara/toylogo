@@ -127,6 +127,8 @@ public:
 
   //Executes the command com
   void exec(turtle_com_t *com);
+  
+  void printAttr();
 }; 
 
 #endif

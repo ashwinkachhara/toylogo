@@ -92,6 +92,7 @@ void turtle_t::forward(const double _dist)
 	glVertex3f(pos.x, pos.y, 0.0f);
 	glVertex3f(pos.x + _dist*cos(dir*PI/180), pos.y + _dist*sin(dir*PI/180), 0.0f);
 	glEnd();
+	set_pos(pos.x + _dist*cos(dir*PI/180), pos.y + _dist*sin(dir*PI/180));
 }
 
 void turtle_t::back(const double _dist)   
@@ -191,5 +192,10 @@ void turtle_t::exec(turtle_com_t *com)
       std::cerr<<"Unknown Command: Ignoring"<<std::endl;
       exit(-1);
     }
+}
+
+void turtle_t::printAttr()
+{
+	std::cerr<<"Pos: "<<pos.x<<", "<<pos.y<<". Dir: "<<dir<<". Color: "<<col.r<<", "<<col.g<<", "<<col.b<<".\n";
 }
 

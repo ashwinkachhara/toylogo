@@ -56,8 +56,22 @@ void koch(turtle_t &turt, double x)
      }
 }
 
+void testPattern(turtle_t &turt)
+{
+	turt.reset();
+	turt.clear();
+	
+	turt.printAttr();
+	turt.forward(0.2);
+	turt.printAttr();
+	turt.turn_right(90);
+	turt.printAttr();
+	turt.forward(0.2);
+}
+
 void render_drawing(turtle_t &turt)
 {
-  koch(turt, 1.0);
-  //~ turt.forward(40);
+	koch(turt, 1.0);
+	//~ testPattern(turt);
+  
 }
