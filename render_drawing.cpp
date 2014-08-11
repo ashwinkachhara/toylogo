@@ -59,4 +59,5 @@ void koch(turtle_t &turt, double x)
 void render_drawing(turtle_t &turt)
 {
   koch(turt, 1.0);
+  //~ turt.forward(40);
 }

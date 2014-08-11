@@ -26,50 +26,88 @@
 
 #include "turtle.hpp"
 
+#define PI 3.14159265
+
 void turtle_t::reset(void) 
-{ }
+{ 
+	set_pos(0,0);
+	set_dir(0);
+}
 
 void turtle_t::clear(void)
-{ }
+{ 
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
 
 void turtle_t::set_pos(const vertex_t _pos)
-{ }
+{ 	
+	pos = _pos;
+}
 
 void turtle_t::set_pos(const double _x, const double _y)
-{ }
+{ 
+	pos.x = _x;
+	pos.y = _y;
+}
 
 void turtle_t::set_dir(const double _dir)
-{ }
+{
+	dir = _dir;
+}
 
 void turtle_t::set_col(const color_t _col)
-{ }
+{
+	col = _col;
+}
 
 void turtle_t::set_col(const double _r, const double _g, const double _b)
-{ }
+{ 
+	col.r = _r;
+	col.g = _g;
+	col.b = _b;
+}
 
 void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
-{ }
+{ 
+	glClearColor(_r, _g, _b, 1.0f);
+}
 
 void turtle_t::scale(const double _s)
 { }
 
 void turtle_t::turn_left(const double _angle)    
-{ }
+{ 
+	set_dir(dir+_angle);
+}
 
 void turtle_t::turn_right(const double _angle)
-{ }
+{
+	set_dir(dir-_angle);
+}
 
 void turtle_t::forward(const double _dist)  
-{ }
+{
+	glColor4f(col.r, col.g, col.b, 1.0);
+	glBegin(GL_LINES);
+	glVertex3f(pos.x, pos.y, 0.0f);
+	glVertex3f(pos.x + _dist*cos(dir*PI/180), pos.y + _dist*sin(dir*PI/180), 0.0f);
+	glEnd();
+}
 
 void turtle_t::back(const double _dist)   
-{ }
+{
+	forward(-1*_dist);
+}
 
 void turtle_t::forward_move(const double _dist)
-{ }
+{
+	set_pos(pos.x + _dist*cos(dir*PI/180), pos.y + _dist*sin(dir*PI/180));
+}
 
 void turtle_t::backward_move(const double _dist)
-{ }
+{ 
+	forward_move(-1*_dist);
+}
 
 void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
 { }
