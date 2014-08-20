@@ -129,6 +129,14 @@ std::string parser_t::parse_token(std::istream &_inp, turtle_com_list_t &list)
       std::cerr<<com->s<<std::endl;
       list.push_back(com);
     }
+  else if (token == "PAUSE")
+    {
+      std::cerr<<"Pause: ";
+      turtle_pause_t* com = new turtle_pause_t;
+      _inp>>com->t;
+      std::cerr<<com->t<<std::endl;
+      list.push_back(com);
+    }
   else if (token == "END")
     {
       std::cerr<<"End"<<std::endl;

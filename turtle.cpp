@@ -73,7 +73,14 @@ void turtle_t::set_bgcol(const double _r, const double _g, const double _b)
 }
 
 void turtle_t::scale(const double _s)
-{ }
+{ 
+  glLoadIdentity (); 
+  glScalef (1/_s, 1/_s, 1);
+}
+void turtle_t::pause(const int _t)
+{
+
+}
 
 void turtle_t::turn_left(const double _angle)    
 { 
@@ -111,7 +118,18 @@ void turtle_t::backward_move(const double _dist)
 }
 
 void turtle_t::repeat(const unsigned int &_n, const turtle_com_list_t &_replist)
-{ }
+{ 
+  for (int j=0; j < _n; j++)
+  {
+    for (int i=0; i < _replist.size(); i++)
+    {
+      exec(_replist[i]);
+    }
+  }
+
+}
+
+
 
 void turtle_t::exec(turtle_com_t *com)
 {
@@ -169,6 +187,11 @@ void turtle_t::exec(turtle_com_t *com)
     {
       turtle_scale_t* scalecom = dynamic_cast<turtle_scale_t*>(com);
       if (scalecom) scale(scalecom->s);
+    }
+  else if (com->cname==PAUSE)
+    {
+      turtle_pause_t* pausecom = dynamic_cast<turtle_pause_t*>(com);
+      if (pausecom) pause(pausecom->t);
     }
   else if (com->cname==REPEAT)
     {

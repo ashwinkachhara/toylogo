@@ -80,7 +80,7 @@ void testPattern(turtle_t &turt)
 
 void render_drawing(turtle_t &turt)
 {
-	//~ koch(turt, 1.0);
-	testPattern(turt);
+	koch(turt, 1.0);
+	// testPattern(turt);
   
 }

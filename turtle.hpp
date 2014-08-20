@@ -53,7 +53,6 @@
 class turtle_t
 {
 private:
-  
   vertex_t pos;    // Current position
   double dir;      // Current orientation in degrees ccw from east
   color_t col;     // Current color
@@ -102,6 +101,9 @@ public:
 
   //Scale the drawing canvas by
   void scale(const double _s);
+
+  //Pause for time t
+  void pause(const int _t);
 
   //Turn left - angle is in degrees
   void turn_left(const double _angle);
