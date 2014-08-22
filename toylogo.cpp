@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <string>
+#include "unistd.h"
 
 #include "parser.hpp"
 #include "gl_framework.hpp"
@@ -36,6 +37,11 @@ turtle_com_list_t::iterator liter;
 std::string filename, progname;
 bool file_flag=false;
 
+//! The pointer to the GLFW window
+GLFWwindow* window;
+
+bool pauseFlag = false;
+
 //GLFW display callback
 void renderGL( void )
 {
@@ -48,6 +54,15 @@ void renderGL( void )
 	{
 	  com = *liter;
 	  turt.exec(com);
+	  pauseFlag = false;
+	  //~ std::cerr<<turt.isPaused()<<" here\n";
+	  if(turt.isPaused() > 0){
+		  std::cerr<<turt.isPaused()<<"000 milliseconds slept for\n";
+		  glfwSwapBuffers(window);
+		  usleep(turt.isPaused() * 1000);
+		  turt.pause(0);
+		  pauseFlag = true;		  
+	  }
 	}
     }
   //Or draw the default
@@ -111,9 +126,6 @@ int main (int argc, char *argv[])
 {
   progname=argv[0];
 
-  //! The pointer to the GLFW window
-  GLFWwindow* window;
-
   //! Setting up the GLFW Error callback
   glfwSetErrorCallback(csX75::error_callback);
 
@@ -158,7 +170,9 @@ int main (int argc, char *argv[])
       renderGL();
 
       // Swap front and back buffers
-      glfwSwapBuffers(window);
+      if(!pauseFlag){
+		glfwSwapBuffers(window);
+	}
       
       // Poll for and process events
       glfwPollEvents();

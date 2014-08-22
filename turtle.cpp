@@ -79,7 +79,9 @@ void turtle_t::scale(const double _s)
 }
 void turtle_t::pause(const int _t)
 {
-
+	pause_t = _t;
+	//~ printAttr();
+	//~ std::cerr<<isPaused()<<" stored pause duration\n";
 }
 
 void turtle_t::turn_left(const double _angle)    
@@ -219,6 +221,12 @@ void turtle_t::exec(turtle_com_t *com)
 
 void turtle_t::printAttr()
 {
-	std::cerr<<"Pos: "<<pos.x<<", "<<pos.y<<". Dir: "<<dir<<". Color: "<<col.r<<", "<<col.g<<", "<<col.b<<".\n";
+	//~ std::cerr<<"Pos: "<<pos.x<<", "<<pos.y<<". Dir: "<<dir<<". Color: "<<col.r<<", "<<col.g<<", "<<col.b<<".\n";
+	std::cerr<<pause_t<<" pause duration\n";
+}
+
+int turtle_t::isPaused()
+{
+	return pause_t;
 }
 

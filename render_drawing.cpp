@@ -20,6 +20,7 @@
 
 
 #include "render_drawing.hpp"
+#include "unistd.h"
 
 
 void triline(turtle_t &turt, double length)
@@ -66,13 +67,16 @@ void testPattern(turtle_t &turt)
 	green.r = 0.0; green.g = 1.0; green.b = 0.0;
 	blue.r = 0.0; blue.g = 0.0; blue.b = 1.0;
 	
+	turt.pause(1000000);
 	turt.set_col(red);
-	turt.printAttr();
+	//~ turt.printAttr();
 	turt.forward(0.2);
+	turt.pause(1000);
 	turt.turn_right(90);
 	turt.backward_move(0.05);
 	turt.set_col(green);
 	turt.back(0.2);
+	turt.pause(1000);
 	turt.set_bgcol(blue.r, blue.g, blue.b);
 	
 	//~ turt.clear();
@@ -80,7 +84,7 @@ void testPattern(turtle_t &turt)
 
 void render_drawing(turtle_t &turt)
 {
-	koch(turt, 1.0);
-	// testPattern(turt);
+	//~ koch(turt, 1.0);
+	testPattern(turt);
   
 }

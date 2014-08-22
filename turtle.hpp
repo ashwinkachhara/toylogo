@@ -56,7 +56,8 @@ private:
   vertex_t pos;    // Current position
   double dir;      // Current orientation in degrees ccw from east
   color_t col;     // Current color
-
+  int pause_t;
+  
 public:
 
   //Default Constructor
@@ -66,6 +67,7 @@ public:
     reset(); 
     //Set the current draw color
     col.r = 1.0; col.g = 1.0; col.b = 1.0;
+    pause_t = 0;
   }
 
   //Copy Constructor
@@ -74,6 +76,7 @@ public:
     pos.x = turt.pos.x; pos.y = turt.pos.y;
     dir = turt.dir;
     col.r = turt.col.r; col.g = turt.col.g; col.b = turt.col.b;
+    pause_t = 0;
   }
 
   //Default Destructor
@@ -131,6 +134,8 @@ public:
   void exec(turtle_com_t *com);
   
   void printAttr();
+  
+  int isPaused();
 }; 
 
 #endif
