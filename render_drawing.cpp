@@ -56,7 +56,7 @@ void koch(turtle_t &turt, double x)
      }
 }
 
-void testPattern(turtle_t &turt)
+void testPattern(turtle_t &turt, double x)
 {
 	turt.reset();
 	turt.clear();
@@ -78,9 +78,40 @@ void testPattern(turtle_t &turt)
 	//~ turt.clear();
 }
 
+void dragonComp(turtle_t&, int, double);
+
+void dragon(turtle_t &turt, int x, double side){
+	if (x == 1)
+		turt.forward(side);
+	else {
+		dragon(turt, x-1, side);
+		turt.turn_left(90);
+		dragonComp(turt, x-1, side);
+	}
+}
+
+void dragonComp(turtle_t &turt, int x, double side){
+	if (x == 1)
+		turt.forward(side);
+	else{
+		dragon(turt, x-1, side);
+		turt.turn_right(90);
+		dragonComp(turt, x-1, side);
+	}
+}
+
 void render_drawing(turtle_t &turt)
 {
-	koch(turt, 1.0);
+	//~ koch(turt, 1.0);
 	// testPattern(turt);
+	turt.reset();
+	turt.clear();
+	turt.set_bgcol(0.22, 0.69, 0.87);
+	turt.backward_move(0.3);
+	turt.turn_right(90);
+	turt.forward_move(0.2);
+	turt.set_col(0.498039, 1.0, 0.0);
+	int num = 20;
+	dragon(turt, num, 0.03/num);
   
 }
